@@ -9,7 +9,7 @@ export function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(getList);
   console.log('getList', getList);
-  // console.log(deleteContact(data));
+  console.log('contacts', contacts);
   const delContacts = data => {
     console.log(deleteContact(data));
     dispatch(deleteContact(data));
