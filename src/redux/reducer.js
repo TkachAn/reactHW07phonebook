@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-// import { addContact, deleteContact, filterContact } from './actions.js';
-import { addContact, deleteContact, filterContact } from './contactSlice';
+import { addContact, deleteContact, filterContact } from './actions.js';
+
 import {
   loadFromStorage,
   saveInStorage,
@@ -13,6 +13,7 @@ export const contactsReducer = createReducer(
   },
   {
     [addContact]: (state, action) => {
+      console.log('state', state);
       const isNameExist = state.items.find(
         contact =>
           contact.name.toLowerCase() === action.payload.name.toLowerCase()
