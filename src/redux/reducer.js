@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addContact, deleteContact, filterContact } from './actions.js';
+// import { addContact, deleteContact, filterContact } from './actions.js';
+import { addContact, deleteContact, filterContact } from './contactSlice';
 import {
   loadFromStorage,
   saveInStorage,
