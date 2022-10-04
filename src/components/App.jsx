@@ -13,8 +13,6 @@ export const App = () => {
       <ContactForm />
       <h2>Contacts</h2>
       {Number(contacts.length) > 1 && <Filter />}
-      {/* <Filter /> */}
-      {/* <ContactList /> */}
       {contacts.items.length > 0 ? (
         <ContactList />
       ) : (
