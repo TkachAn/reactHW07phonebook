@@ -20,6 +20,8 @@ export function ContactForm() {
       name,
       number,
     };
+    console.log('addContact(data)', addContact(data));
+
     dispatch(addContact(data));
   };
   /** */
