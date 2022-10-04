@@ -6,8 +6,9 @@ import css from './filter.module.css';
 export function Filter() {
   const dispatch = useDispatch();
   const filter = useSelector(state => state.contactsReducer.filter);
-
+  console.log('filter', filter);
   const changeFilter = data => {
+    console.log('filterContact(data)', filterContact(data));
     dispatch(filterContact(data));
   };
   return (
