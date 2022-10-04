@@ -8,6 +8,8 @@ import css from './list.module.css';
 export function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(getList);
+  console.log('getList', getList);
+  // console.log(deleteContact(data));
   const delContacts = data => {
     console.log(deleteContact(data));
     dispatch(deleteContact(data));
