@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { MdClose } from 'react-icons/md';
-import { deleteContact } from '../../redux/actions.js';
-// import { deleteContact } from '../../redux/contactSlice';
+
+// import { deleteContact } from '../../redux/actions.js';
+import { deleteContact } from '../../redux/contactSlice';
 import { getList } from '../../redux/selectors';
 import css from './list.module.css';
 
@@ -9,6 +9,7 @@ export function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(getList);
   const delContacts = data => {
+    console.log(deleteContact(data));
     dispatch(deleteContact(data));
   };
 
@@ -23,7 +24,7 @@ export function ContactList() {
               type="button"
               onClick={() => delContacts(id)}
             >
-              X{/* <MdClose size={24} /> */}
+              X
             </button>
           </div>
         </li>
