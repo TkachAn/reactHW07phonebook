@@ -18,6 +18,8 @@ export const contactsReducer = createReducer(
         contact =>
           contact.name.toLowerCase() === action.payload.name.toLowerCase()
       );
+
+      console.log('isNameExist', isNameExist);
       isNameExist
         ? alert(`${action.payload.name} is already in contacts`)
         : state.items.push(action.payload);
