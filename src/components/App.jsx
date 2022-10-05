@@ -12,10 +12,9 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
-      {/* {contacts.items.length > 1 && <Filter />} */}
-      {contacts.length > 1 && <Filter />}
-      {/* {contacts.items.length > 0 ? ( */}
-      {contacts.length > 0 ? (
+      {contacts.items.length > 1 && <Filter />}
+      {/* {contacts.length > 1 && <Filter />} */}
+      {contacts.items.length > 0 ? (
         <ContactList />
       ) : (
         <p>Your phonebook is empty. Please add contact.</p>
