@@ -10,6 +10,8 @@ export const contactsReducer = createReducer(
   {
     items: loadFromStorage('phonebook'),
     filter: '',
+    isLoading: false,
+    error: null,
   },
   {
     [addContact]: (state, action) => {
