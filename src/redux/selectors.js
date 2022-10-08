@@ -7,6 +7,7 @@ export const getList = state => {
     contact.name.toLowerCase().includes(getFilter(state))
   );
 };
+// console.log('first', first);
 // export const getList = state => {
 //   state.contactsReducer.items.filter(contact =>
 //     contact.name.toLowerCase().includes(state.contactsReducer.filter)
