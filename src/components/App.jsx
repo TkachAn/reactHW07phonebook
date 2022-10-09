@@ -1,25 +1,35 @@
 // import { Filter } from './filter/filter';
-// import { ContactForm } from './contactForm/form';
-// import { ContactList } from './contactList/list';
-import { getContacts } from 'redux/selectors';
+import { ContactForm } from './contactForm/form';
+import { ContactList } from './contactList/list';
+// import { getContact } from 'redux/selectors';
+// import { getContacts } from 'redux/selectors';
 import { fetchContacts } from 'redux/operAxios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'; //
 import { useEffect } from 'react';
+// import { getError, getIsLoading } from 'redux/selectors';
 
 export const App = () => {
   const dispatch = useDispatch();
+  // const isLoading = useSelector(getIsLoading);
+  // const error = useSelector(getError);
+  const { items, isLoading, error } = useSelector(fetchContacts);
+  console.log('App-getContacts', useSelector(fetchContacts));
+  console.log('App-items', { items });
 
-  const { items, isLoading, error } = useSelector(getContacts);
-
+  // const { items, isLoading, error } = useSelector(getContacts);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
     <div>
-      {isLoading && <p>Loading tasks...</p>}
-      {error && <p>{error}</p>}
-      <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p>
+      {/* <AppBar /> */}
+      <ContactForm />
+      {/* {isLoading && !error && <b>Request in progress...</b>} */}
+      <ContactList />
+      {/* {isLoading && <p>Loading tasks...</p>}
+      {error && <p>{error}</p>} */}
+      {/* <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p> */}
     </div>
   );
 };
