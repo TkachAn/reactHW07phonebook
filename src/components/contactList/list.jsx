@@ -1,18 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 
-import { deleteContact } from '../../redux/actions.js';
+// import { deleteContact } from '../../redux/actions.js';
 // import { deleteContact } from '../../redux/contactSlice';
-import { getList } from '../../redux/selectors';
+// import { getList } from '../../redux/selectors';
 import css from './list.module.css';
 
 export function ContactList() {
-  const dispatch = useDispatch();
-  const contacts = useSelector(getList);
-  console.log('getList', getList);
-  console.log('contacts', contacts);
+  // const dispatch = useDispatch();
+  const contacts = []; //useSelector(getList);
+  // console.log('getList', getList);
+  // console.log('contacts', contacts);
   const delContacts = data => {
-    console.log(deleteContact(data));
-    dispatch(deleteContact(data));
+    // console.log(deleteContact(data));
+    // dispatch(deleteContact(data));
   };
 
   return (
