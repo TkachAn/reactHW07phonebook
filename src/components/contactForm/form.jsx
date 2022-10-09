@@ -1,4 +1,4 @@
-import { addContact } from '../../redux/operAxios';
+import { addContact } from '../../redux/operations';
 import { useDispatch } from 'react-redux';
 import css from './form.module.css';
 
@@ -10,14 +10,14 @@ export function ContactForm() {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.elements.name.value;
-    const phone = form.elements.number.value;
-    console.log(name, phone);
+    const phone = form.elements.phone.value;
+
     form.reset();
     const data = {
       name,
       phone,
     };
-    console.log('data', data);
+    // console.log('data', data);
     dispatch(addContact(data));
   };
   /** */
@@ -36,11 +36,11 @@ export function ContactForm() {
         />
       </label>
       <label className={css.label}>
-        Number
+        Phone number
         <input
           className={css.input}
           type="tel"
-          name="number"
+          name="phone"
           placeholder="enter your phone number, please."
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
