@@ -1,51 +1,40 @@
-import { useSelector } from 'react-redux'; // useDispatch,
-import { getContacts } from 'redux/selectors';
-// import { getContacts } from 'redux/selectors';
-import { fetchContacts } from 'redux/operAxios';
-// import { fetchContacts } from 'redux/operAxios';
-// import { deleteContact } from 'redux/operAxios';
-// import { deleteContact } from '../../redux/actions.js';
-// import { deleteContact } from '../../redux/contactSlice';
-// import { getList } from '../../redux/selectors';
-import css from './list.module.css';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { selectSearch, selectContacts } from 'redux/selectors';
+import { ContactItem } from './item';
 
-export function ContactList() {
-  // const dispatch = useDispatch();
-  const contacts = [{}, {}]; //useSelector(fetchContacts);
-  const { items } = useSelector(fetchContacts);
-  console.log('List-getContacts', useSelector(getContacts));
-  console.log('List-items', { items });
-  // const contacts = fetchContacts();
-  // const contacts = useSelector(fetchContacts());
-  // const contacts = useSelector(getContacts);
-  // const contacts = useSelector(state => state.contacts);
-  // const contacts = useSelector(getContacts.item);
-  // console.log('getList', getList);
-  console.log('List--contacts', contacts); //contacts
-  // const delContacts = data => {
-  //   // console.log(deleteContact(data));
-  //   // dispatch(deleteContact(data));
-  // };
+export const ContactList = () => {
+  const filter = useSelector(selectSearch);
+  const { contacts } = useSelector(selectContacts);
+  let filteredContacts = contacts;
+
+  if (filter.searchValue.toLowerCase()) {
+    filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.searchValue.toLowerCase())
+    );
+  }
 
   return (
-    <ul className={css.list}>
-      {contacts.map(({ id, name, phone }) => {
-        return (
-          <li className={css.item} key={id}>
-            <div className={css.info}>
-              {name}: {phone}
-              <button
-                className={css.btn}
-                type="button"
-                // onClick={() => delContacts(id)}
-              >
-                X
-              </button>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <ul>
+        {filteredContacts.map(({ id, name, phone }) => {
+          return <ContactItem id={id} name={name} phone={phone} key={id} />;
+        })}
+      </ul>
+    </>
   );
-}
-/* <ContactItem user={name} tel={number} delId={id} /> */
+};
+
+ContactList.propType = {
+  contacts: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }),
+  error: PropTypes.string,
+};
+
+// {error && <p>{error}</p>}
+// {!filteredContacts.length && Boolean(contacts.length) && (
+// 	<p className="inputName">No contacts found</p>
+// )}
