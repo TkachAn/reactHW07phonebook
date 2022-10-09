@@ -1,11 +1,11 @@
-import { nanoid } from 'nanoid';
-import { addContact } from '../../redux/actions';
+// import { nanoid } from 'nanoid';
+// import { addContact } from '../../redux/actions';
 // import { addContact } from '../../redux/contactSlice';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import css from './form.module.css';
 
 export function ContactForm() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   /** */
   const handleSubmit = e => {
@@ -16,13 +16,13 @@ export function ContactForm() {
     console.log(name, number);
     form.reset();
     const data = {
-      id: nanoid(),
+      // id: nanoid(),
       name,
       number,
     };
-    console.log('addContact(data)', addContact(data));
-
-    dispatch(addContact(data));
+    // console.log('addContact(data)', addContact(data));
+    console.log('data', data);
+    // dispatch(addContact(data));
   };
   /** */
   return (
