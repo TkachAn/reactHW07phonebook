@@ -1,37 +1,39 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts } from './operAxios';
+import { fetchContacts, addContact } from './operAxios';
 
 const contactsInitialState = {
   items: [],
   isLoading: false,
   error: null,
 };
-
+// console.log('contactsInitialState', contactsInitialState);
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
-  // reducers: {
-  //   fetchingInProgress(state) {
-  //     state.isLoading = true;
-  //   },
-  //   fetchingSuccess(state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     state.items = action.payload;
-  //   },
-  //   fetchingError(state, action) {
-  //     state.isLoading = false;
-  //     state.error = action.payload;
-  //   },
-  // },
+
   extraReducers: {
-    [fetchContacts.pending](state, action) {
+    [addContact.pending](state) {
+      state.isLoading = true;
+    },
+    [addContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(action.payload);
+    },
+    [addContact.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    [fetchContacts.pending](state) {
       state.isLoading = true;
     },
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
+
+      console.log('conSlice-fetchContacts', state.items);
     },
     [fetchContacts.rejected](state, action) {
       state.isLoading = false;
