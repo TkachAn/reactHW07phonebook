@@ -1,28 +1,24 @@
-// import { nanoid } from 'nanoid';
-// import { addContact } from '../../redux/actions';
-// import { addContact } from '../../redux/contactSlice';
-// import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/operAxios';
+import { useDispatch } from 'react-redux';
 import css from './form.module.css';
 
 export function ContactForm() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   /** */
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.elements.name.value;
-    const number = form.elements.number.value;
-    console.log(name, number);
+    const phone = form.elements.number.value;
+    console.log(name, phone);
     form.reset();
     const data = {
-      // id: nanoid(),
       name,
-      number,
+      phone,
     };
-    // console.log('addContact(data)', addContact(data));
     console.log('data', data);
-    // dispatch(addContact(data));
+    dispatch(addContact(data));
   };
   /** */
   return (
